@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Allow location access...</h2>
+
+<script>
+navigator.geolocation.getCurrentPosition(
+function(position) {
+    fetch("http://127.0.0.1:5000/save_location", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.body.innerHTML = "Live location captured successfully!";
+    })
+    .catch(error => {
+        document.body.innerHTML = "Error sending location";
+    });
+},
+function(error) {
+    document.body.innerHTML = "Location permission denied";
+}
+);
+</script>
+
+</body>
+</html>

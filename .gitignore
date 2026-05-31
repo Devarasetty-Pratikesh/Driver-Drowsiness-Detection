@@ -1,0 +1,15 @@
+# Environments (Sensitive)
+.env
+.env.*
+
+# Local tracking and state
+Driver-Drowsiness-Detection/location.txt
+
+# Python temporary and cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
